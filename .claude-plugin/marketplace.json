@@ -1,12 +1,12 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "product-eng-stack",
+  "name": "indie-dev-stack",
   "owner": {
     "name": "Jaime Basso",
     "url": "https://github.com/JaimeJunr"
   },
   "metadata": {
-    "description": "Anthropic's knowledge-work plugins for Claude Code, each optional, without the MCP connectors: no logins, just skills."
+    "description": "The Claude Code stack for indie developers with their own projects and products: Anthropic's knowledge-work plugins, each optional, without the MCP connectors: no logins, just skills."
   },
   "plugins": [
     {

@@ -1,6 +1,8 @@
-# Claude Code Product & Engineering Stack
+# Claude Code Indie Dev Stack
 
-Anthropic's `product-management`, `engineering`, `small-business`, `legal`, `design` and `data`
+The Claude Code stack for developers who build their own projects and products:
+engineering, product, design, data, legal and running the business, all in one
+marketplace. Anthropic's `product-management`, `engineering`, `small-business`, `legal`, `design` and `data`
 plugins from [`knowledge-work-plugins`](https://github.com/anthropics/knowledge-work-plugins),
 each one optional, **without the MCP connectors**.
 
@@ -15,7 +17,7 @@ all work standalone.
 Add the marketplace in Claude Code:
 
 ```
-/plugin marketplace add JaimeJunr/claude-code-product-eng-stack
+/plugin marketplace add JaimeJunr/claude-code-indie-dev-stack
 ```
 
 Each plugin is optional. Pick with the `/plugin` menu (Discover tab), or from a
@@ -29,7 +31,7 @@ scripts/install.sh --all    # everything
 Or one by one:
 
 ```
-/plugin install engineering@product-eng-stack
+/plugin install engineering@indie-dev-stack
 ```
 
 ## What you get

@@ -28,9 +28,9 @@ for p in sys.argv[1:]:
     })
 json.dump({
     "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-    "name": "product-eng-stack",
+    "name": "indie-dev-stack",
     "owner": {"name": "Jaime Basso", "url": "https://github.com/JaimeJunr"},
-    "metadata": {"description": "Anthropic's knowledge-work plugins for Claude Code, each optional, without the MCP connectors: no logins, just skills."},
+    "metadata": {"description": "The Claude Code stack for indie developers with their own projects and products: Anthropic's knowledge-work plugins, each optional, without the MCP connectors: no logins, just skills."},
     "plugins": plugins,
 }, open(".claude-plugin/marketplace.json", "w"), indent=2, ensure_ascii=False)
 open(".claude-plugin/marketplace.json", "a").write("\n")
