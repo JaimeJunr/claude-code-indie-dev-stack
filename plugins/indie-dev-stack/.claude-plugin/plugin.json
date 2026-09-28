@@ -1,0 +1,10 @@
+{
+  "name": "indie-dev-stack",
+  "version": "0.1.0",
+  "description": "The glue: a router skill that picks the right skill for each task across product, engineering, design, data and small-business, and settles the cases where two plugins overlap.",
+  "author": { "name": "Jaime Basso", "url": "https://github.com/JaimeJunr" },
+  "homepage": "https://github.com/JaimeJunr/claude-code-indie-dev-stack",
+  "repository": "https://github.com/JaimeJunr/claude-code-indie-dev-stack",
+  "license": "MIT",
+  "keywords": ["product", "engineering", "design", "data", "indie", "claude-code", "skills"]
+}

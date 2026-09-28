@@ -1,6 +1,6 @@
 ---
 name: metrics-review
-description: Review and analyze product metrics with trend analysis and actionable insights. Use when running a weekly, monthly, or quarterly metrics review, investigating a sudden spike or drop, comparing performance against targets, or turning raw numbers into a scorecard with recommended actions.
+description: "Review and analyze product metrics with trend analysis and actionable insights. Use when running a weekly, monthly, or quarterly metrics review, investigating a sudden spike or drop, comparing performance against targets, or turning raw numbers into a scorecard with recommended actions. For product metrics such as usage, activation and retention. For cash, sales or pipeline use small-business:business-pulse."
 argument-hint: "<time period or metric focus>"
 ---
 

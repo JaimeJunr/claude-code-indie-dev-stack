@@ -36,6 +36,13 @@ Or one by one:
 
 ## What you get
 
+- **indie-dev-stack** (the glue, install it with any two or more): a router skill
+  that picks the lead skill when plugins overlap, plus written rulings in
+  [conflicts.md](plugins/indie-dev-stack/skills/indie-dev-stack/references/conflicts.md).
+  The skills that used to compete for the same prompt (research synthesis,
+  metrics review, business snapshot, dashboards) also carry a one-line hint in
+  their description, see `patches/descriptions.json`.
+
 - **product-management**: write-spec, roadmap-update, sprint-planning, metrics-review,
   competitive-brief, stakeholder-update, synthesize-research, product-brainstorming, `/brainstorm`
 - **engineering**: architecture, code-review, debug, deploy-checklist, documentation,
@@ -59,8 +66,9 @@ playbook, which solo developers do not have, and it overlaps with
 scripts/sync.sh [ref]
 ```
 
-Re-clones upstream, copies the plugins, deletes `.mcp.json`, regenerates the
-marketplace manifest and `UPSTREAM.lock`. A GitHub Action does this every Monday
+Re-clones upstream, copies the plugins, deletes `.mcp.json`, applies
+`patches/descriptions.json`, regenerates the marketplace manifest and
+`UPSTREAM.lock`. The glue plugin is ours and is never overwritten. A GitHub Action does this every Monday
 and opens a PR; another one validates every PR and fails if a `.mcp.json` shows up.
 
 ## License

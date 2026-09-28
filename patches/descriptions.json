@@ -1,0 +1,7 @@
+{
+  "product-management/synthesize-research": "For decisions about what to build or prioritize. For usability or UX questions use design:research-synthesis.",
+  "design/research-synthesis": "For usability and UX questions. For what-to-build and roadmap decisions use product-management:synthesize-research.",
+  "product-management/metrics-review": "For product metrics such as usage, activation and retention. For cash, sales or pipeline use small-business:business-pulse.",
+  "small-business/business-pulse": "For the business side: cash, sales and pipeline. For product usage metrics use product-management:metrics-review.",
+  "data/build-dashboard": "For a dashboard built from a dataset or query. For a recurring business report use small-business:report-builder."
+}

@@ -1,6 +1,6 @@
 ---
 name: research-synthesis
-description: Synthesize user research into themes, insights, and recommendations. Use when you have interview transcripts, survey results, usability test notes, support tickets, or NPS responses that need to be distilled into patterns, user segments, and prioritized next steps.
+description: "Synthesize user research into themes, insights, and recommendations. Use when you have interview transcripts, survey results, usability test notes, support tickets, or NPS responses that need to be distilled into patterns, user segments, and prioritized next steps. For usability and UX questions. For what-to-build and roadmap decisions use product-management:synthesize-research."
 argument-hint: "<research data, transcripts, or survey results>"
 ---
 

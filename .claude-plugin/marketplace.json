@@ -6,9 +6,20 @@
     "url": "https://github.com/JaimeJunr"
   },
   "metadata": {
-    "description": "The Claude Code stack for indie developers with their own projects and products: Anthropic's knowledge-work plugins, each optional, without the MCP connectors: no logins, just skills."
+    "description": "The Claude Code stack for indie developers with their own projects and products: Anthropic's knowledge-work plugins, each optional, without the MCP connectors, plus a glue plugin that routes between them."
   },
   "plugins": [
+    {
+      "name": "indie-dev-stack",
+      "source": "./plugins/indie-dev-stack",
+      "description": "The glue: a router skill that picks the right skill for each task across product, engineering, design, data and small-business, and settles the cases where two plugins overlap.",
+      "author": {
+        "name": "Jaime Basso",
+        "url": "https://github.com/JaimeJunr"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/JaimeJunr/claude-code-indie-dev-stack"
+    },
     {
       "name": "product-management",
       "source": "./plugins/product-management",
