@@ -73,4 +73,5 @@ and opens a PR; another one validates every PR and fails if a `.mcp.json` shows 
 
 ## License
 
-Plugin content: Apache-2.0, by Anthropic (see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
+Anthropic's plugins: Apache-2.0 (`LICENSE`). The glue plugin, scripts and docs: MIT
+(`LICENSE-MIT`). Details in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
