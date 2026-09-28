@@ -1,8 +1,8 @@
 # Claude Code Indie Dev Stack
 
 The Claude Code stack for developers who build their own projects and products:
-engineering, product, design, data, legal and running the business, all in one
-marketplace. Anthropic's `product-management`, `engineering`, `small-business`, `legal`, `design` and `data`
+engineering, product, design, data and running the business, all in one
+marketplace. Anthropic's `product-management`, `engineering`, `small-business`, `design` and `data`
 plugins from [`knowledge-work-plugins`](https://github.com/anthropics/knowledge-work-plugins),
 each one optional, **without the MCP connectors**.
 
@@ -40,11 +40,18 @@ Or one by one:
   competitive-brief, stakeholder-update, synthesize-research, product-brainstorming, `/brainstorm`
 - **engineering**: architecture, code-review, debug, deploy-checklist, documentation,
   incident-response, standup, system-design, tech-debt, testing-strategy
-- **small-business**, **legal**, **design**, **data**: see each plugin's README under `plugins/`
+- **small-business**, **design**, **data**: see each plugin's README under `plugins/`
 
 Skills still contain `~~category` placeholders (for example `~~project tracker`).
 Without a connector, Claude asks you to paste the data instead. `CONNECTORS.md`
 is kept because the skills link to it.
+
+## Left out on purpose
+
+`legal` is not included. It reviews contracts against an in-house negotiation
+playbook, which solo developers do not have, and it overlaps with
+`small-business:contract-review`. To add it back, append `legal` to `PLUGINS` in
+`scripts/sync.sh` and run it.
 
 ## Keeping it in sync
 

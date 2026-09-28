@@ -5,7 +5,7 @@
 # To add a plugin, append its upstream folder name to PLUGINS.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-PLUGINS=(product-management engineering small-business legal design data)
+PLUGINS=(product-management engineering small-business design data)
 REF="${1:-main}"
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 git clone --quiet --depth 1 --branch "$REF" https://github.com/anthropics/knowledge-work-plugins "$TMP/up"

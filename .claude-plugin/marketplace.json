@@ -40,16 +40,6 @@
       "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/small-business"
     },
     {
-      "name": "legal",
-      "source": "./plugins/legal",
-      "description": "Speed up contract review, NDA triage, and compliance workflows for in-house legal teams. Draft legal briefs, organize precedent research, and manage institutional knowledge.",
-      "author": {
-        "name": "Anthropic"
-      },
-      "license": "Apache-2.0",
-      "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/legal"
-    },
-    {
       "name": "design",
       "source": "./plugins/design",
       "description": "Accelerate design workflows — critique, design system management, UX writing, accessibility audits, research synthesis, and dev handoff. From exploration to pixel-perfect specs.",
