@@ -6,26 +6,68 @@
     "url": "https://github.com/JaimeJunr"
   },
   "metadata": {
-    "description": "Anthropic's product-management and engineering plugins for Claude Code, without the MCP connectors: no logins, no OAuth, just skills."
+    "description": "Anthropic's knowledge-work plugins for Claude Code, each optional, without the MCP connectors: no logins, just skills."
   },
   "plugins": [
     {
       "name": "product-management",
       "source": "./plugins/product-management",
       "description": "Write feature specs, plan roadmaps, and synthesize user research faster. Keep stakeholders updated and stay ahead of the competitive landscape.",
-      "author": { "name": "Anthropic" },
-      "category": "productivity",
+      "author": {
+        "name": "Anthropic"
+      },
       "license": "Apache-2.0",
       "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management"
     },
     {
       "name": "engineering",
       "source": "./plugins/engineering",
-      "description": "Standups, code review, architecture decisions, incident response, and technical documentation. Works standalone.",
-      "author": { "name": "Anthropic" },
-      "category": "development",
+      "description": "Streamline engineering workflows — standups, code review, architecture decisions, incident response, and technical documentation. Works with your existing tools or standalone.",
+      "author": {
+        "name": "Anthropic"
+      },
       "license": "Apache-2.0",
       "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering"
+    },
+    {
+      "name": "small-business",
+      "source": "./plugins/small-business",
+      "description": "Pre-built small business workflows to help you run and grow your business. Supports a majority of the tools you already use. You approve every step that touches money or customers. Install and then ask Claude to help you get onboarded.",
+      "author": {
+        "name": "Anthropic"
+      },
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/small-business"
+    },
+    {
+      "name": "legal",
+      "source": "./plugins/legal",
+      "description": "Speed up contract review, NDA triage, and compliance workflows for in-house legal teams. Draft legal briefs, organize precedent research, and manage institutional knowledge.",
+      "author": {
+        "name": "Anthropic"
+      },
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/legal"
+    },
+    {
+      "name": "design",
+      "source": "./plugins/design",
+      "description": "Accelerate design workflows — critique, design system management, UX writing, accessibility audits, research synthesis, and dev handoff. From exploration to pixel-perfect specs.",
+      "author": {
+        "name": "Anthropic"
+      },
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design"
+    },
+    {
+      "name": "data",
+      "source": "./plugins/data",
+      "description": "Write SQL, explore datasets, and generate insights faster. Build visualizations and dashboards, and turn raw data into clear stories for stakeholders.",
+      "author": {
+        "name": "Anthropic"
+      },
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/data"
     }
   ]
 }

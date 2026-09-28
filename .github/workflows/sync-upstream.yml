@@ -1,0 +1,44 @@
+name: Sync upstream plugins
+
+on:
+  schedule:
+    - cron: "0 9 * * 1" # Mondays 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync from upstream
+        run: scripts/sync.sh
+
+      - name: Summarize upstream changes
+        id: summary
+        run: |
+          {
+            echo 'body<<EOF'
+            echo 'Automated weekly sync from upstream.'
+            echo
+            echo '```'
+            git diff --stat -- plugins UPSTREAM.lock | tail -n 30
+            echo '```'
+            echo
+            echo 'Review the diff before merging: this content ships to everyone who installs the marketplace.'
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/upstream-sync
+          delete-branch: true
+          commit-message: "chore: sync upstream plugins"
+          title: "chore: sync upstream plugins"
+          body: ${{ steps.summary.outputs.body }}
+          labels: upstream-sync
