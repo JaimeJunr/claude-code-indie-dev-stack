@@ -59,7 +59,20 @@ Detailed rulings for each overlap are in
 [references/conflicts.md](references/conflicts.md). Read it when a supporting
 skill contradicts the lead.
 
-## 4. Load budget
+## 4. Agents
+
+When the request is a whole loop and not one skill, hand it to an agent:
+
+| The user wants... | Agent |
+|---|---|
+| To turn an idea into a plan before coding | `product-shaper` |
+| To know if a change is ready to ship | `ship-check` |
+| A weekly read on the product and the business | `weekly-review` |
+| A launch or release announcement plan | `launch-planner` |
+
+All four are read-only or planning-only: none deploys, posts, sends or pays.
+
+## 5. Load budget
 
 One lead skill, at most one supporting. If a request needs three, split it and
 run them in sequence, telling the user which skill handles each step.
