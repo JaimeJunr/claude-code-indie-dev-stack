@@ -1,0 +1,31 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "product-eng-stack",
+  "owner": {
+    "name": "Jaime Basso",
+    "url": "https://github.com/JaimeJunr"
+  },
+  "metadata": {
+    "description": "Anthropic's product-management and engineering plugins for Claude Code, without the MCP connectors: no logins, no OAuth, just skills."
+  },
+  "plugins": [
+    {
+      "name": "product-management",
+      "source": "./plugins/product-management",
+      "description": "Write feature specs, plan roadmaps, and synthesize user research faster. Keep stakeholders updated and stay ahead of the competitive landscape.",
+      "author": { "name": "Anthropic" },
+      "category": "productivity",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management"
+    },
+    {
+      "name": "engineering",
+      "source": "./plugins/engineering",
+      "description": "Standups, code review, architecture decisions, incident response, and technical documentation. Works standalone.",
+      "author": { "name": "Anthropic" },
+      "category": "development",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering"
+    }
+  ]
+}
