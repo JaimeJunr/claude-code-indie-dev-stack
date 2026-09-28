@@ -37,7 +37,9 @@ Or one by one:
 ## What you get
 
 - **indie-dev-stack** (the glue, install it with any two or more): a router skill
-  that picks the lead skill when plugins overlap, plus written rulings in
+  that picks the lead skill when plugins overlap, two agents (`product-shaper`:
+  idea to build brief, `change-reviewer`: read-only review of a diff before it ships),
+  plus written rulings in
   [conflicts.md](plugins/indie-dev-stack/skills/indie-dev-stack/references/conflicts.md).
   The skills that used to compete for the same prompt (research synthesis,
   metrics review, business snapshot, dashboards) also carry a one-line hint in

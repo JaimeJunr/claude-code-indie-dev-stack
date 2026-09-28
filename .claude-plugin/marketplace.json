@@ -12,7 +12,7 @@
     {
       "name": "indie-dev-stack",
       "source": "./plugins/indie-dev-stack",
-      "description": "The glue: a router skill that picks the right skill for each task across product, engineering, design, data and small-business, and settles the cases where two plugins overlap.",
+      "description": "The glue: a router skill that picks the right skill for each task across product, engineering, design, data and small-business, settles the cases where two plugins overlap, and ships product-shaper and change-reviewer agents.",
       "author": {
         "name": "Jaime Basso",
         "url": "https://github.com/JaimeJunr"
