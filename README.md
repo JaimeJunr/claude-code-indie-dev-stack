@@ -82,6 +82,11 @@ Re-clones upstream, copies the plugins, deletes `.mcp.json`, applies
 `UPSTREAM.lock`. The glue plugin is ours and is never overwritten. A GitHub Action does this every Monday
 and opens a PR; another one validates every PR and fails if a `.mcp.json` shows up.
 
+The Action opens that PR with the `SYNC_TOKEN` secret, a fine-grained token
+with Contents and Pull requests write access to the repo. Without it, the PR
+is opened with the default token, which does not trigger CI, so `validate`
+never runs on the sync PR.
+
 ## License
 
 Anthropic's plugins: Apache-2.0 (`LICENSE`). The glue plugin, scripts and docs: MIT

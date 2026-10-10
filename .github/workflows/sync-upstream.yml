@@ -14,6 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # create-pull-request pushes with the credentials checkout persisted, so
+          # both steps must use the same token or the push fails with exit 128.
+          token: ${{ secrets.SYNC_TOKEN || github.token }}
 
       - name: Sync from upstream
         run: scripts/sync.sh
@@ -36,6 +40,9 @@ jobs:
       - name: Open pull request
         uses: peter-evans/create-pull-request@v7
         with:
+          # PRs opened with the default GITHUB_TOKEN do not trigger workflows, so the
+          # `validate` check would never run on the sync PR.
+          token: ${{ secrets.SYNC_TOKEN || github.token }}
           branch: chore/upstream-sync
           delete-branch: true
           commit-message: "chore: sync upstream plugins"
