@@ -1,17 +1,30 @@
 #!/usr/bin/env bash
 # Pulls plugins from anthropics/knowledge-work-plugins into plugins/, strips the
 # MCP connector servers (.mcp.json) and regenerates the marketplace manifest.
-# Usage: scripts/sync.sh [ref]   (default: main)
+# Also assembles plugins/product-positioning from selected phuryn/pm-skills skills.
+# Usage: scripts/sync.sh [ref]   (default: main, for knowledge-work-plugins)
 # plugins/indie-dev-stack is ours (the glue) and is never touched here.
+# plugins/product-positioning/.claude-plugin is ours; its skills/ and LICENSE are synced.
 # patches/descriptions.json appends a routing hint to a skill's description.
 # To add a plugin, append its upstream folder name to PLUGINS.
+# The design plugin is left out: UI work belongs to the companion frontend stack
+# (JaimeJunr/claude-code-frontend-skills), which syncs its UX research and copy skills.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-PLUGINS=(product-management engineering small-business design data)
+PLUGINS=(product-management engineering small-business data)
+# pm-skills paths copied into plugins/product-positioning/skills/
+PM_SKILLS=(
+  pm-product-strategy/skills/product-vision
+  pm-product-strategy/skills/value-proposition
+  pm-marketing-growth/skills/positioning-ideas
+  pm-market-research/skills/user-personas
+)
 REF="${1:-main}"
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 git clone --quiet --depth 1 --branch "$REF" https://github.com/anthropics/knowledge-work-plugins "$TMP/up"
+git clone --quiet --depth 1 https://github.com/phuryn/pm-skills "$TMP/pm"
 COMMIT="$(git -C "$TMP/up" rev-parse HEAD)"
+PM_COMMIT="$(git -C "$TMP/pm" rev-parse HEAD)"
 mkdir -p plugins
 for p in "${PLUGINS[@]}"; do
   rm -rf "plugins/$p"
@@ -19,6 +32,10 @@ for p in "${PLUGINS[@]}"; do
   rm -f "plugins/$p/.mcp.json"
   cp "$TMP/up/LICENSE" "plugins/$p/LICENSE"
 done
+rm -rf plugins/product-positioning/skills
+mkdir -p plugins/product-positioning/skills
+for s in "${PM_SKILLS[@]}"; do cp -r "$TMP/pm/$s" plugins/product-positioning/skills/; done
+cp "$TMP/pm/LICENSE" plugins/product-positioning/LICENSE
 python3 - "${PLUGINS[@]}" <<'PY'
 import json, re, sys
 from pathlib import Path
@@ -53,6 +70,11 @@ plugins = [{
     "description": json.load(open("plugins/indie-dev-stack/.claude-plugin/plugin.json"))["description"],
     "author": {"name": "Jaime Basso", "url": "https://github.com/JaimeJunr"},
     "license": "MIT", "homepage": "https://github.com/JaimeJunr/claude-code-indie-dev-stack",
+}, {
+    "name": "product-positioning", "source": "./plugins/product-positioning",
+    "description": json.load(open("plugins/product-positioning/.claude-plugin/plugin.json"))["description"],
+    "author": {"name": "Paweł Huryn", "url": "https://www.productcompass.pm"},
+    "license": "MIT", "homepage": "https://github.com/phuryn/pm-skills",
 }]
 for p in sys.argv[1:]:
     m = json.load(open(f"plugins/{p}/.claude-plugin/plugin.json"))
@@ -65,12 +87,26 @@ json.dump({
     "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
     "name": "indie-dev-stack",
     "owner": {"name": "Jaime Basso", "url": "https://github.com/JaimeJunr"},
-    "metadata": {"description": "The Claude Code stack for indie developers with their own projects and products: Anthropic's knowledge-work plugins, each optional, without the MCP connectors, plus a glue plugin that routes between them."},
+    "metadata": {"description": "The Claude Code stack for indie developers with their own projects and products: Anthropic's knowledge-work plugins, each optional, without the MCP connectors, plus product positioning skills and a glue plugin that routes between them."},
     "plugins": plugins,
 }, open(".claude-plugin/marketplace.json", "w"), indent=2, ensure_ascii=False)
 open(".claude-plugin/marketplace.json", "a").write("\n")
 PY
 rm -f patches/.applied
-printf '{\n  "repo": "anthropics/knowledge-work-plugins",\n  "ref": "%s",\n  "commit": "%s",\n  "synced_at": "%s"\n}\n' \
-  "$REF" "$COMMIT" "$(date +%F)" > UPSTREAM.lock
-echo "synced @ ${COMMIT:0:7}"
+cat > UPSTREAM.lock <<EOF
+{
+  "knowledge-work-plugins": {
+    "repo": "anthropics/knowledge-work-plugins",
+    "ref": "$REF",
+    "commit": "$COMMIT",
+    "synced_at": "$(date +%F)"
+  },
+  "pm-skills": {
+    "repo": "phuryn/pm-skills",
+    "ref": "main",
+    "commit": "$PM_COMMIT",
+    "synced_at": "$(date +%F)"
+  }
+}
+EOF
+echo "synced knowledge-work-plugins @ ${COMMIT:0:7}, pm-skills @ ${PM_COMMIT:0:7}"

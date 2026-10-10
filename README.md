@@ -1,8 +1,8 @@
 # Claude Code Indie Dev Stack
 
 The Claude Code stack for developers who build their own projects and products:
-engineering, product, design, data and running the business, all in one
-marketplace. Anthropic's `product-management`, `engineering`, `small-business`, `design` and `data`
+engineering, product, positioning, data and running the business, all in one
+marketplace. Anthropic's `product-management`, `engineering`, `small-business` and `data`
 plugins from [`knowledge-work-plugins`](https://github.com/anthropics/knowledge-work-plugins),
 each one optional, **without the MCP connectors**.
 
@@ -51,7 +51,14 @@ Or one by one:
   competitive-brief, stakeholder-update, synthesize-research, product-brainstorming, `/brainstorm`
 - **engineering**: architecture, code-review, debug, deploy-checklist, documentation,
   incident-response, standup, system-design, tech-debt, testing-strategy
-- **small-business**, **design**, **data**: see each plugin's README under `plugins/`
+- **product-positioning** (from [phuryn/pm-skills](https://github.com/phuryn/pm-skills), MIT): product-vision,
+  value-proposition, positioning-ideas, user-personas. Who the product is for and why it wins; the
+  result goes to `PRODUCT.md`
+- **small-business**, **data**: see each plugin's README under `plugins/`
+
+Screens, UX copy and UX research live in the companion
+[frontend stack](https://github.com/JaimeJunr/claude-code-frontend-skills) (it also syncs
+Anthropic's design skills). Each router points to the other when a request belongs there.
 
 Skills still contain `~~category` placeholders (for example `~~project tracker`).
 Without a connector, Claude asks you to paste the data instead. `CONNECTORS.md`

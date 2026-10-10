@@ -1,0 +1,11 @@
+{
+  "name": "product-positioning",
+  "description": "Who the product is for and why it wins, from Paweł Huryn's pm-skills: product vision, value proposition (JTBD), positioning against competitors and user personas. The output feeds PRODUCT.md, which the frontend stack reads to give the UI a personality.",
+  "author": {
+    "name": "Paweł Huryn",
+    "url": "https://www.productcompass.pm"
+  },
+  "homepage": "https://github.com/phuryn/pm-skills",
+  "license": "MIT",
+  "keywords": ["product", "positioning", "vision", "value-proposition", "personas"]
+}

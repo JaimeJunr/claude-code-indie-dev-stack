@@ -22,8 +22,8 @@ the passes that apply:
    readability, performance.
 2. **Tests** (when logic changed): `engineering:testing-strategy`. What is
    covered, what an obvious failure would slip past.
-3. **UI** (only if the diff touches screens or copy): `design:accessibility-review`
-   and `design:ux-copy`.
+3. **UI** (only if the diff touches screens or copy): the frontend stack's
+   `frontend-stack:ui-reviewer` agent when installed.
 4. **Intent** (only if a spec, PRD, issue or acceptance criteria can be found
    in the repo or the caller's message): does the change do what it says, and
    is there scope nobody asked for. If there is none, say the change has no
