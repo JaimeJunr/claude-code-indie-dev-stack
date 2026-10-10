@@ -1,12 +1,12 @@
 ---
 name: indie-dev-stack
-description: Router for the indie dev stack. Use when a request could fit more than one installed plugin (product-management, engineering, design, data, small-business), for example synthesizing interviews, reviewing metrics, building a dashboard, writing a status update or a business snapshot, and when two skills give different advice. Decides which skill leads. Also use when the request is frontend or UI work (build or redesign a page, "the frontend looks bad", styling, animation) to hand it to the companion frontend stack or tell the user it exists.
+description: Router for the indie dev stack. Use when a request could fit more than one installed plugin (product-management, product-positioning, engineering, data, small-business), for example synthesizing interviews, reviewing metrics, building a dashboard, writing a status update or a business snapshot, and when two skills give different advice. Decides which skill leads. Also use when the request is frontend or UI work (build or redesign a page, "the frontend looks bad", styling, animation) to hand it to the companion frontend stack or tell the user it exists.
 ---
 
 # Indie Dev Stack router
 
 The user is a developer who builds their own products and also runs the
-business around them. Five plugins are installed side by side, each written
+business around them. Several plugins are installed side by side, each written
 for a different kind of team. This skill decides who leads when more than one
 fits, so the agent loads one lead skill instead of two that overlap.
 
@@ -24,7 +24,7 @@ schema or analytics setup. These outrank any skill's defaults.
 | The task is... | Lead | Support |
 |---|---|---|
 | Turn interview notes, survey answers or feedback into decisions about **what to build** | `product-management:synthesize-research` | - |
-| Same input, but the question is about **usability, UX or a design decision** | `design:research-synthesis` | `design:user-research` |
+| Same input, but the question is about **usability, UX or a design decision** | `ux-research:research-synthesis` (frontend stack, see step 3) | - |
 | Weekly or monthly review of **product** metrics (usage, activation, retention, funnel) | `product-management:metrics-review` | `data:analyze` for the queries |
 | Snapshot of the **business**: cash, sales, pipeline, what needs attention | `small-business:business-pulse` | - |
 | "Is growth working?": channels, campaigns, conversion, best products | `small-business:growth-pulse` | - |
@@ -34,11 +34,12 @@ schema or analytics setup. These outrank any skill's defaults.
 | Status update for investors, users or a team | `product-management:stakeholder-update` | - |
 | Daily update from commits, PRs and tickets | `engineering:standup` | - |
 | Monday briefing of the week ahead | `small-business:monday-brief` | - |
+| Product vision, "who is this for", why it wins | `product-positioning:product-vision` | `product-positioning:value-proposition` |
+| Positioning against competitors, value proposition | `product-positioning:positioning-ideas` | `product-positioning:value-proposition`, `product-management:competitive-brief` |
+| User personas from research or survey data | `product-positioning:user-personas` | - |
 | Feature spec or PRD | `product-management:write-spec` | `engineering:architecture` once decided |
 | Roadmap, sprint plan | `product-management:roadmap-update` / `sprint-planning` | - |
 | Architecture decision, system design, tech debt, incident, deploy | `engineering:*` | - |
-| Critique a screen, design system, UX copy, accessibility | `design:*` | - |
-| Design handoff spec for implementation | `design:design-handoff` | `engineering:documentation` |
 | Contract, invoice, payroll, tax, proposals, hiring, leads | `small-business:*` (start at `smb-router` if unsure) | - |
 
 ## 3. Frontend and UI work
@@ -48,18 +49,17 @@ AI-made", styling, components, animation and visual polish belong to the
 companion frontend stack.
 
 - If `frontend-stack:frontend-stack` is in the session's skill list, hand the
-  request to it. It leads every UI task; `design:design-critique`,
-  `design:design-system` and `design:accessibility-review` only support it.
-- If it is not installed, still help: load `design:design-critique` for a
-  critique (plus `design:ux-copy` or `design:accessibility-review` when the
-  request is about copy or accessibility), and tell the user once per session
-  that the companion marketplace covers building and redesigning UI:
+  request to it. It leads every UI task, UX copy and UX research included.
+- If it is not installed, still help with what you know (a short critique,
+  the copy, the accessibility basics), and tell the user once per session that
+  the companion marketplace covers building and redesigning UI:
   `/plugin marketplace add JaimeJunr/claude-code-frontend-skills`.
   The note never replaces the help: even a vague "the frontend is bad" gets
-  the critique.
+  that help.
 - When the UI work needs a product decision first (who it is for, positioning,
   personality), run `product-shaper` and save its brief to `PRODUCT.md` at the
-  repo root, so the frontend stack can read it.
+  repo root, so the frontend stack can read it. The frontend stack's
+  `ui-ux-pro-max:brand` turns that into the brand voice.
 
 ## 4. Precedence ladder
 
@@ -71,8 +71,8 @@ When two loaded skills disagree, the higher rule wins:
 3. **Who the output is for.** An investor, a user, a teammate and yourself need
    different updates; pick the skill built for that reader.
 4. **Domain owner.** Product decisions to `product-management`, code and
-   operations to `engineering`, screens to `frontend-stack` when installed,
-   else `design`, numbers from a warehouse to
+   operations to `engineering`, screens and UX to `frontend-stack`, positioning
+   to `product-positioning`, numbers from a warehouse to
    `data`, money and customers to `small-business`.
 5. **The lead skill's own defaults.**
 

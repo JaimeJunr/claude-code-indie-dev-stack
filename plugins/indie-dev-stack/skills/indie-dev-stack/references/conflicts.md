@@ -6,12 +6,12 @@ Rulings follow the precedence ladder in `../SKILL.md`.
 ## Research synthesis
 
 - `product-management:synthesize-research` ends in roadmap recommendations.
-- `design:research-synthesis` covers usability tests and NPS and points to
-  `design:user-research`.
+- `ux-research:research-synthesis` (companion frontend stack) covers usability
+  tests and NPS and points to `ux-research:user-research`.
 - **Ruling:** decide by the question. "What should we build or prioritize" goes
   to product-management. "Why do people struggle with this screen" goes to
-  design. If both questions are open, run product-management first and hand its
-  themes to design for the UX follow-up.
+  ux-research. If both questions are open, run product-management first and hand
+  its themes to ux-research for the UX follow-up.
 
 ## Metrics and reports
 

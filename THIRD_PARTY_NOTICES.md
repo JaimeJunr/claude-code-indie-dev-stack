@@ -1,6 +1,10 @@
 # Third-party notices
 
-Everything under `plugins/` except `plugins/indie-dev-stack` comes from
+`plugins/product-positioning/skills` comes from https://github.com/phuryn/pm-skills
+(MIT, copy in `plugins/product-positioning/LICENSE`), by Paweł Huryn, copied
+verbatim. Pinned commit: see `UPSTREAM.lock`.
+
+Everything else under `plugins/` except `plugins/indie-dev-stack` comes from
 https://github.com/anthropics/knowledge-work-plugins (Apache-2.0, copy in each
 plugin's `LICENSE`), by Anthropic. Pinned commit: see `UPSTREAM.lock`.
 
