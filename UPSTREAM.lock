@@ -2,13 +2,13 @@
   "knowledge-work-plugins": {
     "repo": "anthropics/knowledge-work-plugins",
     "ref": "main",
-    "commit": "95bdacc803aa5cfdb10f35e5b9fb2d4b11100133",
-    "synced_at": "2026-10-10"
+    "commit": "33eeda1e8fd856455b05479d13a0f85b5f803744",
+    "synced_at": "2026-10-19"
   },
   "pm-skills": {
     "repo": "phuryn/pm-skills",
     "ref": "main",
-    "commit": "c68487d721e419ec87af1ae6412a842978eab785",
-    "synced_at": "2026-10-10"
+    "commit": "07b34f64ee828df08953f505b7f747aef85ae7c6",
+    "synced_at": "2026-10-19"
   }
 }
